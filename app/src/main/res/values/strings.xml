@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">shop</string>
+    <string name="email_sent_successful">Enter your username and e-mail we will send you an email to reset your password</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sdvsdv">sdvsdv</string>
+    <string name="lbL_add_address">Address</string>
+    <string name="title_address_list">Address List</string>
+    <string name="no_address_found">No address found</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_address">Address</string>
+</resources>

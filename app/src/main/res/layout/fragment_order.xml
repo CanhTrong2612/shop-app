@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.OrderFragment">
+
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <SearchView
+                android:id="@+id/search_favorite_product"
+                android:drawablePadding="8dp"
+                android:hint="Search"
+                android:inputType="text"
+                android:padding="8dp"
+                android:background="@drawable/search"
+                android:layout_margin="20dp"
+                android:drawableLeft="@drawable/baseline_search_24"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"/>
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/circle_indication"
+                android:background="@color/colorImageViewBackground"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:text=" Favorite Products List "
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:textSize="17dp"
+                android:textColor="@color/pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_farorite_product"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            </ScrollView>
+        </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
