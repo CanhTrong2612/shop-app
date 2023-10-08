@@ -12,4 +12,7 @@
     <string name="hint_full_name">Full name</string>
     <string name="hint_phone_number">Phone number</string>
     <string name="hint_address">Address</string>
+    <string name="order_status_pending">Pending</string>
+    <string name="order_status_in_process">Process</string>
+    <string name="order_status_delivered">Delivered</string>
 </resources>

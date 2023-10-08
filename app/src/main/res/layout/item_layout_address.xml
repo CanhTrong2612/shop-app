@@ -1,61 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="60dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="8dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
         <LinearLayout
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:id="@+id/tv_address_full_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18dp"
+                android:textSize="17dp"
                 android:text="Denis Panjuta" />
 
             <TextView
+                android:layout_marginTop="3dp"
                 android:id="@+id/tv_address_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/app_gradient_color_background"
-                android:paddingStart="@dimen/item_address_type_paddingStartEnd"
-                android:paddingTop="@dimen/item_address_type_paddingTopBottom"
-                android:paddingEnd="@dimen/item_address_type_paddingStartEnd"
-                android:paddingBottom="@dimen/item_address_type_paddingTopBottom"
-                android:textColor="@color/white"
-                android:textSize="@dimen/address_details_textSize"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="@color/pink"
                 android:textStyle="bold"
-                android:text="Home" />
+                android:textSize="14dp"
+                android:background="@drawable/item_primary_color_border_background"
+                android:layout_width="60dp"
+                android:layout_height="30dp"/>
         </LinearLayout>
 
         <TextView
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
             android:id="@+id/tv_address_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:textSize="@dimen/address_details_textSize"
+            android:textSize="16dp"
             android:text="XYZ" />
 
         <TextView
-            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
             android:id="@+id/tv_address_mobile_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:textSize="@dimen/address_details_textSize"
+            android:layout_marginStart="10dp"
             android:text="+84 123456789" />
-    </LinearLayout>
 
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

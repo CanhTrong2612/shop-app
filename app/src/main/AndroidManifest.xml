@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Shop"
         tools:targetApi="31">
         <activity
+            android:name=".CkeckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderDetailActivity"
             android:exported="false" />
         <activity

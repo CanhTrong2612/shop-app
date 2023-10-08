@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso
 
 class AddProductActivity : BaseActivity() {
     private var binding: ActivityAddProductBinding? = null
-    private lateinit var mProduct: Product
+    private  var mProduct: Product?= null
     private var mProductImage: String? = null
     private var mSelectImageUri: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,21 +34,30 @@ class AddProductActivity : BaseActivity() {
         }
         binding?.btSubmitProduct?.setOnClickListener {
             showProgressDialog()
+
             if (mSelectImageUri!=null){
                 FirestoreClass().uploadImageToCloudStorge(this,mSelectImageUri)
             }
             else {
                 addProduct()
             }
-
-
         }
-        if (intent.hasExtra("product")){
-            mProduct = intent.getParcelableExtra("product")!!
-
-          //  editproduct(mProduct)
-
+        if (intent.hasExtra(Constant.EXTRA_EDIT_PRODUCT)){
+            mProduct = intent.getParcelableExtra(Constant.EXTRA_EDIT_PRODUCT)!!
         }
+        if (mProduct!= null && mProduct!!.product_id.isNotEmpty()){
+            binding?.productTitle?.setText(mProduct!!.title)
+            binding?.productPrice?.setText(mProduct!!.price)
+            binding?.productDescription?.setText(mProduct!!.description)
+            binding?.productQuantity?.setText(mProduct!!.quantity)
+            Picasso.get()
+                .load(mProduct!!.image)
+                .fit()
+                .into(binding?.ivProduct)
+            binding?.tvLableAddProduct?.text = "Edit Product"
+        }
+
+
     }
 
 
@@ -117,7 +126,13 @@ class AddProductActivity : BaseActivity() {
             binding?.productQuantity?.text.toString(),
             mProductImage
         )
-        FirestoreClass().addProduct(this, product)
+        if (mProduct!=null && mProduct!!.product_id.isNotEmpty()){
+            FirestoreClass().updateProduct(this,product,mProduct!!.product_id)
+        }
+        else{
+            FirestoreClass().addProduct(this, product)
+        }
+
     }
 
     fun productUploadSuccess() {
@@ -139,24 +154,7 @@ class AddProductActivity : BaseActivity() {
             binding?.ivProduct?.setImageURI(Uri.parse(mSelectImageUri!!.toString()))
         }
     }
-    fun editproduct(product: Product){
-        product == mProduct
-        binding?.productTitle?.setText(product.title)
-        binding?.productPrice?.setText(product.price)
-        binding?.productDescription?.setText(product.description)
-        binding?.productQuantity?.setText(product.quantity)
-        Picasso.get()
-            .load(product.image)
-            .fit()
-            .into(binding?.ivProduct)
-        binding?.tvLableAddProduct?.text = "Edit Product"
-        val hashMap = HashMap<String,Any>()
-        hashMap["title"] = binding?.productTitle?.text.toString()
-        hashMap["price"] =binding?.productPrice?.text.toString()
-        hashMap["desc"]= binding?.productDescription?.text.toString()
-        hashMap["quantity"] = binding?.productQuantity?.text.toString()
-      //  FirestoreClass().updateProduct(this,hashMap,product.product_id)
-    }
+
     fun updateProductSuccess(){
         showErrorSnackBar("update product success",false)
       //  hideProgressDialog()

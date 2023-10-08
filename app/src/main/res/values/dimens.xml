@@ -34,4 +34,12 @@
     <dimen name="item_address_name_textSize">18dp</dimen>
     <dimen name="lbl_order_details_textSize">18dp</dimen>
     <dimen name="my_order_details_items_receipt">10dp</dimen>
+    <dimen name="checkout_content_marginStartEnd">8dp</dimen>
+    <dimen name="checkout_content_marginTopBottom">8dp</dimen>
+    <dimen name="checkout_lbl_textSize">18dp</dimen>
+    <dimen name="checkout_content_paddingStartEnd">8dp</dimen>
+    <dimen name="checkout_content_paddingTopBottom">8dp</dimen>
+    <dimen name="checkout_content_lbl_padding">8dp</dimen>
+    <dimen name="ll_checkout_items_receipt">8dp</dimen>
+    <dimen name="checkout_label_value_textSize">16dp</dimen>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorOffWhite"
+    android:background="#E9EEEF"
     tools:context=".AddressActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_address_list_activity"
@@ -37,7 +37,7 @@
         android:textColor="@color/pink"
         android:textStyle="bold"
         android:padding="@dimen/btn_add_address_padding"
-        android:text="@string/lbL_add_address"
+        android:text="Add Address"
         android:textSize="@dimen/add_address_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

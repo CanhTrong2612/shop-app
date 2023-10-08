@@ -3,6 +3,7 @@ package com.example.shop.utils
 import android.app.Activity
 import android.net.Uri
 import android.webkit.MimeTypeMap
+import com.example.shop.model.Cart
 
 object Constant {
     const val USERS = "users"
@@ -31,6 +32,7 @@ object Constant {
     const val OTHER :String ="other"
     const val ADDRESSES : String = "Addresses"
     const val EXTRA_ADDRESS_DETAILS = "AddressDetails"
+    const val EXTRA_EDIT_PRODUCT ="edit_product"
     const val EXTRA_SELECT_ADDRESS = "extra_select_address"
     const val EXTRA_SELECTED_ADDRESS = "extra_selected_address"
     const val ADD_ADDRESS_REQUEST_CODE = 121
@@ -42,4 +44,6 @@ object Constant {
         return MimeTypeMap.getSingleton().getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
             .toString()
     }
+    val listmua = ArrayList<Cart>()
+
 }

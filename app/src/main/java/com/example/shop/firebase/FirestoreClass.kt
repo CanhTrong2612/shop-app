@@ -10,10 +10,7 @@ import com.example.shop.adapter.DashBoardAdapter
 import com.example.shop.fragment.DashboardFragment
 import com.example.shop.fragment.OrderFragment
 import com.example.shop.fragment.ProductFragment
-import com.example.shop.model.Address
-import com.example.shop.model.Cart
-import com.example.shop.model.Product
-import com.example.shop.model.Users
+import com.example.shop.model.*
 import com.example.shop.utils.Constant
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -181,10 +178,10 @@ class FirestoreClass {
                 Log.e(fragment.javaClass.simpleName, "error while delete", e)
             }
     }
-    fun updateProduct(activity: AddProductActivity, hashMap: HashMap<String, Any>, productId: String){
+    fun updateProduct(activity: AddProductActivity,product:Product, productId: String){
         mFireStore.collection(Constant.PRODUCTS)
             .document(productId)
-            .update(hashMap)
+            .set(product, SetOptions.merge())
             .addOnSuccessListener {
                 activity.updateProductSuccess()
             }
@@ -219,12 +216,65 @@ class FirestoreClass {
                 Log.e(activity.javaClass.simpleName, "error while add cart!!", e)
             }
     }
+    fun addToCart2(activity: CartActivity, cart: Cart) {
+        mFireStore.collection("cart_to_checkout")
+            .document()
+            .set(cart, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.addToCartSuccess()
+            }
+            .addOnFailureListener { e ->
+                Log.e(activity.javaClass.simpleName, "error while add cart!!", e)
+            }
+    }
+    fun getCartistToCheckout(activity: CkeckoutActivity) {
+        mFireStore.collection("cart_to_checkout")
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("list cart ", document.documents.toString())
+                val list: ArrayList<Cart> = ArrayList()
+                for (i in document.documents) {
+                    val cart = i.toObject(Cart::class.java)!!
+                    cart.id = i.id
+                    list.add(cart)
+                }
+                activity.successCartItemList(list)
+            }
+            .addOnFailureListener { e ->
+                Log.e(activity.javaClass.simpleName, "error while get cart list", e)
+            }
+    }
 
-    fun getCartist(activity: CartActivity) {
+    fun getCartist1(activity: Activity) {
         mFireStore.collection(Constant.CART_ITEMS)
             .get()
             .addOnSuccessListener { document ->
                 Log.e("list cart ", document.documents.toString())
+                val list: ArrayList<Cart> = ArrayList()
+                for (i in document.documents) {
+                    val cart = i.toObject(Cart::class.java)!!
+                    cart.id = i.id
+                    list.add(cart)
+                }
+                when(activity){
+                    is CartActivity->{
+                        activity.getCartList(list)
+                    }
+                    is CkeckoutActivity ->{
+                        activity.successCartItemList(list)
+                    }
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Log.e(activity.javaClass.simpleName, "error while get cart list", e)
+            }
+    }
+    fun getCartist(activity: CartActivity) {
+        mFireStore.collection(Constant.CART_ITEMS)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("list cart mua ", document.documents.toString())
                 val list: ArrayList<Cart> = ArrayList()
                 for (i in document.documents) {
                     val cart = i.toObject(Cart::class.java)!!
@@ -272,6 +322,25 @@ class FirestoreClass {
             }
             .addOnFailureListener { e ->
                 Log.e(activity.javaClass.simpleName, "lol", e)
+            }
+    }
+    fun updateAddress(activity: AddAddressActivity,address:Address,id:String){
+        mFireStore.collection(Constant.ADDRESSES)
+            .document(id)
+            .set(address, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.addAddressSuccess()
+            }
+            .addOnFailureListener { e->
+                Log.e(activity.javaClass.simpleName,"error update the address",e)
+            }
+    }
+    fun deleteAddress(activity: AddressActivity,id:String){
+        mFireStore.collection(Constant.ADDRESSES)
+            .document(id)
+            .delete()
+            .addOnSuccessListener {
+                activity.getListAddress()
             }
     }
 
@@ -361,6 +430,18 @@ class FirestoreClass {
             .addOnFailureListener { e->
                 Log.e(fragment.javaClass.simpleName, "error while delete favorite product", e)
             }
+    }
+    fun placeAnorder(activity: CkeckoutActivity,order: Order){
+        mFireStore.collection(Constant.ORDERS)
+            .document()
+            .set(order, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.orderPlaceSuccess()
+            }
+            .addOnFailureListener { e->
+                Log.e(activity.javaClass.simpleName,"error",e)
+            }
+
     }
 }
 

@@ -107,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:textColor="@color/colorSecondaryText"
+
                         android:textSize="@dimen/my_order_details_label_value_textSize"
                         tools:text="20 Oct 2020" />
                 </LinearLayout>

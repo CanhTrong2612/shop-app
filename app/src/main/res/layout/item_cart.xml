@@ -23,7 +23,7 @@
                 android:padding="10dp"
                 android:id="@+id/iv_cart_item_image"
                 android:layout_width="80dp"
-                android:layout_height="70dp"
+                android:layout_height="80dp"
                 android:scaleType="fitXY" />
         </LinearLayout>
 
@@ -32,7 +32,7 @@
             android:id="@+id/ll_cart_item_details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:orientation="vertical">
@@ -53,6 +53,7 @@
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:text="$100" />
+
         </LinearLayout>
 
         <LinearLayout

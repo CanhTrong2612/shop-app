@@ -12,7 +12,7 @@
         android:background="@drawable/img_splash_background"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="MyShopPal"
+        android:text="ShopOnl "
         android:textColor="@color/white"
         android:textSize="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
